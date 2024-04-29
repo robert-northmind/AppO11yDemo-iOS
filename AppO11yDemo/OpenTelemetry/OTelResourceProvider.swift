@@ -15,7 +15,9 @@ struct OTelResourceProvider {
         let customResource = Resource(
             attributes: [
                 "service.name": AttributeValue.string(OTelConfig().serviceName),
-                "kind": AttributeValue.string("client")
+                "deployment.environment": AttributeValue.string("staging"),
+                "service.namespace": AttributeValue.string("coffee"),
+                "service.instance.id": AttributeValue.string("coffee-66b6c48dd5-hprdn")
             ]
         )
         return defaultResources.merging(other: customResource)

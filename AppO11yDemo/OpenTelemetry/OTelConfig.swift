@@ -18,7 +18,7 @@ struct OTelConfig {
     // Like this: https://otlp-gateway-prod-eu-west-2.grafana.net/otlp
     let endpointUrl = "https://otlp-gateway-prod-eu-west-2.grafana.net/otlp"
 
-    let serviceName = "AppO11lyDemoService"
-    let instrumentationScopeName = "AppO11lyDemoScopeName"
+    let serviceName = "AppO11yDemo"
+    let instrumentationScopeName = "AppO11yDemo"
     let instrumentationScopeVersion = "semver:0.1.0"
 }

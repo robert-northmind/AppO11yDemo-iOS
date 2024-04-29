@@ -57,6 +57,9 @@ class OTelTraces {
                     // Sets the name of the span to the relative path of the URL
                     return request.url?.path().split(separator: "/").last?.lowercased()
                 },
+                spanCustomization: { (request, spanBuilder) in
+                    spanBuilder.setAttribute(key: "kind", value: "client")
+                },
                 injectCustomHeaders: { request, span in
                     // This section is for injecting headers, we are injecting X-B3 headers to enable context propagation
                     if request.url?.host() == otelEndpointUrl.host() {
