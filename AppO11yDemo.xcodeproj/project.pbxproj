@@ -28,6 +28,11 @@
 		622082152BDFA46500413D9C /* InjectedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082142BDFA46500413D9C /* InjectedValues.swift */; };
 		622082172BDFB7EB00413D9C /* CoffeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082162BDFB7EB00413D9C /* CoffeeDetailView.swift */; };
 		622082192BDFBC3D00413D9C /* RandomUserReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082182BDFBC3D00413D9C /* RandomUserReviewView.swift */; };
+		6220821C2BDFBE3A00413D9C /* OTelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220821B2BDFBE3A00413D9C /* OTelConfig.swift */; };
+		6220821E2BDFBEDA00413D9C /* OTelAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220821D2BDFBEDA00413D9C /* OTelAuthProvider.swift */; };
+		622082202BDFC07E00413D9C /* OTelResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220821F2BDFC07E00413D9C /* OTelResourceProvider.swift */; };
+		622082222BDFC15800413D9C /* OTelTraces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082212BDFC15800413D9C /* OTelTraces.swift */; };
+		622082242BDFCEA200413D9C /* OTelLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082232BDFCEA200413D9C /* OTelLogs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		622082142BDFA46500413D9C /* InjectedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValues.swift; sourceTree = "<group>"; };
 		622082162BDFB7EB00413D9C /* CoffeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailView.swift; sourceTree = "<group>"; };
 		622082182BDFBC3D00413D9C /* RandomUserReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserReviewView.swift; sourceTree = "<group>"; };
+		6220821B2BDFBE3A00413D9C /* OTelConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelConfig.swift; sourceTree = "<group>"; };
+		6220821D2BDFBEDA00413D9C /* OTelAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelAuthProvider.swift; sourceTree = "<group>"; };
+		6220821F2BDFC07E00413D9C /* OTelResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelResourceProvider.swift; sourceTree = "<group>"; };
+		622082212BDFC15800413D9C /* OTelTraces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelTraces.swift; sourceTree = "<group>"; };
+		622082232BDFCEA200413D9C /* OTelLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelLogs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 		620C81172BDBB4A800CE2B96 /* AppO11yDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6220821A2BDFBE1900413D9C /* OpenTelemetry */,
 				622082132BDFA44E00413D9C /* DependencyInjection */,
 				6220820E2BDF9D0400413D9C /* Services */,
 				6220820B2BDF9C8E00413D9C /* Models */,
@@ -201,6 +212,18 @@
 				622082142BDFA46500413D9C /* InjectedValues.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		6220821A2BDFBE1900413D9C /* OpenTelemetry */ = {
+			isa = PBXGroup;
+			children = (
+				6220821B2BDFBE3A00413D9C /* OTelConfig.swift */,
+				6220821D2BDFBEDA00413D9C /* OTelAuthProvider.swift */,
+				6220821F2BDFC07E00413D9C /* OTelResourceProvider.swift */,
+				622082212BDFC15800413D9C /* OTelTraces.swift */,
+				622082232BDFCEA200413D9C /* OTelLogs.swift */,
+			);
+			path = OpenTelemetry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,9 +369,14 @@
 			files = (
 				622082122BDF9D7100413D9C /* ApiError.swift in Sources */,
 				6220820A2BDF9C6B00413D9C /* CoffeeListViewModel.swift in Sources */,
+				6220821E2BDFBEDA00413D9C /* OTelAuthProvider.swift in Sources */,
+				622082222BDFC15800413D9C /* OTelTraces.swift in Sources */,
 				622082072BDF9C3300413D9C /* CoffeeListView.swift in Sources */,
 				622082172BDFB7EB00413D9C /* CoffeeDetailView.swift in Sources */,
+				622082242BDFCEA200413D9C /* OTelLogs.swift in Sources */,
 				620C811B2BDBB4A800CE2B96 /* ContentView.swift in Sources */,
+				6220821C2BDFBE3A00413D9C /* OTelConfig.swift in Sources */,
+				622082202BDFC07E00413D9C /* OTelResourceProvider.swift in Sources */,
 				620C81192BDBB4A800CE2B96 /* AppO11yDemoApp.swift in Sources */,
 				622082192BDFBC3D00413D9C /* RandomUserReviewView.swift in Sources */,
 				622082152BDFA46500413D9C /* InjectedValues.swift in Sources */,
