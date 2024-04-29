@@ -8,10 +8,7 @@
 import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import StdoutExporter
-import ResourceExtension
 import OpenTelemetryProtocolExporterHttp
-import URLSessionInstrumentation
 
 class OTelLogs {
     static let instance = OTelLogs()

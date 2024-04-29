@@ -9,7 +9,6 @@ import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
 import StdoutExporter
-import ResourceExtension
 import OpenTelemetryProtocolExporterHttp
 import URLSessionInstrumentation
 
@@ -31,10 +30,6 @@ class OTelTraces {
             endpoint: URL(string: "\(OTelConfig().endpointUrl)/v1/traces")!,
             useSession: URLSession(configuration: urlConfig)
         )
-        let spanExporter = MultiSpanExporter(spanExporters: [
-            otlpHttpTraceExporter, // Sends traces output to remote consumer
-            StdoutExporter() // Sends traces output to console
-        ])
         
         let simpleSpanProcessor = SimpleSpanProcessor(spanExporter: StdoutExporter())
         let batchSpanProcessor = BatchSpanProcessor(spanExporter: otlpHttpTraceExporter)

@@ -5,19 +5,19 @@
 //  Created by Robert Magnusson on 29.04.24.
 //
 
-import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import StdoutExporter
 import ResourceExtension
-import OpenTelemetryProtocolExporterHttp
-import URLSessionInstrumentation
 
 struct OTelResourceProvider {
     func getResource() -> Resource {
-        let customResource = Resource.init(
-            attributes: ["service.name": AttributeValue.string(OTelConfig().serviceName)]
+        let defaultResources = DefaultResources().get()
+        let customResource = Resource(
+            attributes: [
+                "service.name": AttributeValue.string(OTelConfig().serviceName),
+                "kind": AttributeValue.string("client")
+            ]
         )
-        return customResource.merging(other: DefaultResources().get())
+        return defaultResources.merging(other: customResource)
     }
 }
