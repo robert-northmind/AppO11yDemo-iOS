@@ -26,6 +26,8 @@ class CoffeeService: CoffeeServiceProtocol {
     @Published var error: ApiError? = nil
     var errorPublisher: Published<ApiError?>.Publisher { $error }
     
+    private let logger = OTelLogs.instance.getLogger()
+    
     func getCoffees() {
         error = nil
         isLoading = true
@@ -54,6 +56,7 @@ class CoffeeService: CoffeeServiceProtocol {
                 return
             }
 
+            logger.log("CoffeeService: Got new coffees", severity: .debug)
             DispatchQueue.main.async {
                 self.coffees = result
             }
@@ -61,6 +64,7 @@ class CoffeeService: CoffeeServiceProtocol {
     }
     
     private func updateWithError(_ error: ApiError) {
+        logger.log("CoffeeService: Failed to get coffees with error: \(error)", severity: .error)
         DispatchQueue.main.async {
             self.error = error
         }

@@ -16,8 +16,11 @@ class CoffeeListViewModel: ObservableObject {
     
     private let coffeeService: CoffeeServiceProtocol
     private var disposeBag: Set<AnyCancellable> = []
+    private let logger = OTelLogs.instance.getLogger()
 
     init(coffeeService: CoffeeServiceProtocol = InjectedValues[\.coffeeService]) {
+        logger.log("CoffeeListViewModel: got created", severity: .debug)
+
         self.coffeeService = coffeeService
 
         coffeeService.coffeesPublisher.sink { [weak self] nextCoffees in
@@ -29,6 +32,7 @@ class CoffeeListViewModel: ObservableObject {
     }
     
     func getCoffees() async {
+        logger.log("CoffeeListViewModel: getting coffees", severity: .debug)
         coffeeService.getCoffees()
     }
     
