@@ -106,11 +106,11 @@ struct AppO11yDemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onAppear {
-                    print("I did appear!")
-//                    createSpans()
-                    doSomeLogging()
-                }
+//                .onAppear {
+//                    print("I did appear!")
+////                    createSpans()
+////                    doSomeLogging()
+//                }
         }
     }
     
