@@ -27,12 +27,16 @@
 		622082122BDF9D7100413D9C /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082112BDF9D7100413D9C /* ApiError.swift */; };
 		622082152BDFA46500413D9C /* InjectedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082142BDFA46500413D9C /* InjectedValues.swift */; };
 		622082172BDFB7EB00413D9C /* CoffeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082162BDFB7EB00413D9C /* CoffeeDetailView.swift */; };
-		622082192BDFBC3D00413D9C /* RandomUserReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082182BDFBC3D00413D9C /* RandomUserReviewView.swift */; };
 		6220821C2BDFBE3A00413D9C /* OTelConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220821B2BDFBE3A00413D9C /* OTelConfig.swift */; };
 		6220821E2BDFBEDA00413D9C /* OTelAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220821D2BDFBEDA00413D9C /* OTelAuthProvider.swift */; };
 		622082202BDFC07E00413D9C /* OTelResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220821F2BDFC07E00413D9C /* OTelResourceProvider.swift */; };
 		622082222BDFC15800413D9C /* OTelTraces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082212BDFC15800413D9C /* OTelTraces.swift */; };
 		622082242BDFCEA200413D9C /* OTelLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082232BDFCEA200413D9C /* OTelLogs.swift */; };
+		622082262BE0464C00413D9C /* CoffeeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082252BE0464C00413D9C /* CoffeeDetailViewModel.swift */; };
+		622082282BE047AD00413D9C /* CoffeeBrewingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082272BE047AD00413D9C /* CoffeeBrewingService.swift */; };
+		6220822A2BE0CF6600413D9C /* BrewingCoffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622082292BE0CF6600413D9C /* BrewingCoffee.swift */; };
+		6220822C2BE0CFBA00413D9C /* BrewingCoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220822B2BE0CFBA00413D9C /* BrewingCoffeeViewModel.swift */; };
+		6220822E2BE0DD3700413D9C /* CoffeeBrewingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6220822D2BE0DD3700413D9C /* CoffeeBrewingStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,12 +74,16 @@
 		622082112BDF9D7100413D9C /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		622082142BDFA46500413D9C /* InjectedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedValues.swift; sourceTree = "<group>"; };
 		622082162BDFB7EB00413D9C /* CoffeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailView.swift; sourceTree = "<group>"; };
-		622082182BDFBC3D00413D9C /* RandomUserReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserReviewView.swift; sourceTree = "<group>"; };
 		6220821B2BDFBE3A00413D9C /* OTelConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelConfig.swift; sourceTree = "<group>"; };
 		6220821D2BDFBEDA00413D9C /* OTelAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelAuthProvider.swift; sourceTree = "<group>"; };
 		6220821F2BDFC07E00413D9C /* OTelResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelResourceProvider.swift; sourceTree = "<group>"; };
 		622082212BDFC15800413D9C /* OTelTraces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelTraces.swift; sourceTree = "<group>"; };
 		622082232BDFCEA200413D9C /* OTelLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTelLogs.swift; sourceTree = "<group>"; };
+		622082252BE0464C00413D9C /* CoffeeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewModel.swift; sourceTree = "<group>"; };
+		622082272BE047AD00413D9C /* CoffeeBrewingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewingService.swift; sourceTree = "<group>"; };
+		622082292BE0CF6600413D9C /* BrewingCoffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingCoffee.swift; sourceTree = "<group>"; };
+		6220822B2BE0CFBA00413D9C /* BrewingCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingCoffeeViewModel.swift; sourceTree = "<group>"; };
+		6220822D2BE0DD3700413D9C /* CoffeeBrewingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeBrewingStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +184,7 @@
 				620C811A2BDBB4A800CE2B96 /* ContentView.swift */,
 				622082062BDF9C3300413D9C /* CoffeeListView.swift */,
 				622082162BDFB7EB00413D9C /* CoffeeDetailView.swift */,
-				622082182BDFBC3D00413D9C /* RandomUserReviewView.swift */,
+				622082292BE0CF6600413D9C /* BrewingCoffee.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				622082092BDF9C6B00413D9C /* CoffeeListViewModel.swift */,
+				622082252BE0464C00413D9C /* CoffeeDetailViewModel.swift */,
+				6220822B2BE0CFBA00413D9C /* BrewingCoffeeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -194,6 +204,7 @@
 			children = (
 				6220820C2BDF9C9900413D9C /* Coffee.swift */,
 				622082112BDF9D7100413D9C /* ApiError.swift */,
+				6220822D2BE0DD3700413D9C /* CoffeeBrewingStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				6220820F2BDF9D3000413D9C /* CoffeeService.swift */,
+				622082272BE047AD00413D9C /* CoffeeBrewingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -367,19 +379,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6220822A2BE0CF6600413D9C /* BrewingCoffee.swift in Sources */,
 				622082122BDF9D7100413D9C /* ApiError.swift in Sources */,
+				622082282BE047AD00413D9C /* CoffeeBrewingService.swift in Sources */,
 				6220820A2BDF9C6B00413D9C /* CoffeeListViewModel.swift in Sources */,
 				6220821E2BDFBEDA00413D9C /* OTelAuthProvider.swift in Sources */,
 				622082222BDFC15800413D9C /* OTelTraces.swift in Sources */,
 				622082072BDF9C3300413D9C /* CoffeeListView.swift in Sources */,
+				6220822E2BE0DD3700413D9C /* CoffeeBrewingStatus.swift in Sources */,
 				622082172BDFB7EB00413D9C /* CoffeeDetailView.swift in Sources */,
 				622082242BDFCEA200413D9C /* OTelLogs.swift in Sources */,
 				620C811B2BDBB4A800CE2B96 /* ContentView.swift in Sources */,
 				6220821C2BDFBE3A00413D9C /* OTelConfig.swift in Sources */,
 				622082202BDFC07E00413D9C /* OTelResourceProvider.swift in Sources */,
 				620C81192BDBB4A800CE2B96 /* AppO11yDemoApp.swift in Sources */,
-				622082192BDFBC3D00413D9C /* RandomUserReviewView.swift in Sources */,
+				6220822C2BE0CFBA00413D9C /* BrewingCoffeeViewModel.swift in Sources */,
 				622082152BDFA46500413D9C /* InjectedValues.swift in Sources */,
+				622082262BE0464C00413D9C /* CoffeeDetailViewModel.swift in Sources */,
 				6220820D2BDF9C9900413D9C /* Coffee.swift in Sources */,
 				622082102BDF9D3000413D9C /* CoffeeService.swift in Sources */,
 			);
@@ -557,7 +573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grafana.appo11y.demo.AppO11yDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -586,7 +602,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grafana.appo11y.demo.AppO11yDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

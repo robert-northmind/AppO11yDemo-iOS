@@ -5,7 +5,6 @@
 //  Created by Robert Magnusson on 29.04.24.
 //
 
-import Foundation
 import Combine
 
 @MainActor

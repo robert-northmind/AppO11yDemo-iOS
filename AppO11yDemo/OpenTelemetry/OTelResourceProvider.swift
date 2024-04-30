@@ -11,13 +11,14 @@ import ResourceExtension
 
 struct OTelResourceProvider {
     func getResource() -> Resource {
+        let otelConfig = OTelConfig()
         let defaultResources = DefaultResources().get()
         let customResource = Resource(
             attributes: [
-                "service.name": AttributeValue.string(OTelConfig().serviceName),
-                "deployment.environment": AttributeValue.string("staging"),
-                "service.namespace": AttributeValue.string("coffee"),
-                "service.instance.id": AttributeValue.string("coffee-66b6c48dd5-hprdn")
+                "service.name": AttributeValue.string(otelConfig.serviceName),
+                "deployment.environment": AttributeValue.string(otelConfig.deploymentEnvironment),
+                "service.namespace": AttributeValue.string(otelConfig.serviceNamespace),
+                "service.instance.id": AttributeValue.string(otelConfig.serviceInstanceId)
             ]
         )
         return defaultResources.merging(other: customResource)

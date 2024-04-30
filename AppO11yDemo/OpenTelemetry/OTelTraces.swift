@@ -41,8 +41,6 @@ class OTelTraces {
             .build()
         OpenTelemetry.registerTracerProvider(tracerProvider:tracerProvider)
         
-        
-        
         let otelEndpointUrl = URL(string: "\(OTelConfig().endpointUrl)/v1/traces")!,
         _ = URLSessionInstrumentation(
             configuration: URLSessionInstrumentationConfiguration(
@@ -59,6 +57,7 @@ class OTelTraces {
                 },
                 spanCustomization: { (request, spanBuilder) in
                     spanBuilder.setAttribute(key: "kind", value: "client")
+                    spanBuilder.setSpanKind(spanKind: .client)
                 },
                 injectCustomHeaders: { request, span in
                     // This section is for injecting headers, we are injecting X-B3 headers to enable context propagation
