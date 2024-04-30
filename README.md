@@ -1,4 +1,4 @@
-# Monitor your iOS using OpenTelemetry
+# Monitor your iOS app using OpenTelemetry
 
 This is a demo project showing how you can monitor your iOS app using the [OpenTelemetry](https://opentelemetry.io) o11y framework.
 
@@ -20,7 +20,9 @@ This project was built and tested using Xcode 15.3
 Go to [Grafana.com](https://grafana.com) and set up a new account.
 Then go to your account overview and tap the `Configure` button on the OpenTelemetry-tile.
 
-SEE IMAGE
+<div align="center">
+  <img src="https://github.com/robert-northmind/AppO11yDemo-iOS/blob/main/Docs/Resources/otel-config-entry-1.png?raw=true" width="500">
+</div>
 
 There you need to find these 3 things
 
@@ -30,7 +32,9 @@ There you need to find these 3 things
 
 If you don't have a token yet, then you first need to tap the `Generate now` button in the token section.
 
-SEE IMAGE
+<div align="center">
+  <img src="https://github.com/robert-northmind/AppO11yDemo-iOS/blob/main/Docs/Resources/otel-config-info-1.png?raw=true" width="500">
+</div>
 
 ### 2. Configure OpenTelemetry in the Xcode project
 
@@ -151,7 +155,7 @@ let childSpan = tracer.spanBuilder(spanName: "BabySpan")
     .startSpan()
 ```
 
-One important thing to note here. If you want to use Grafana Application O11y, then you need to set the `spanKind` to `.server`. Otherwise Grafana Application O11y will not be able to automatically collect your data.
+One important thing to note here. If you want to use Grafana App O11y, then you need to set the `spanKind` to `.server`. Otherwise Grafana App O11y will not be able to automatically collect your data.
 
 ## Checking out the data in Grafana.com
 
@@ -162,13 +166,26 @@ Go to `Grafana App Observability`. It will have this url: `https://{your-stack}.
 You should be able to see your service pop up there.
 It will look something like this:
 
-SEE IMAGE.
+<div align="center">
+  <img src="https://github.com/robert-northmind/AppO11yDemo-iOS/blob/main/Docs/Resources/app-o11y-services-1.png?raw=true" width="500">
+</div>
 
 Tap on your service and then you get to the details and heath for that service.
 
-SEE IMAGE.
+<div align="center">
+  <img src="https://github.com/robert-northmind/AppO11yDemo-iOS/blob/main/Docs/Resources/app-o11y-status-1.png?raw=true" width="500">
+</div>
 
 From here you can inspect traces and logs and run analysis on your mobile app and make sure everything works as expected!
 
 And if not, then this is the perfect place to start the next big bug hunt!
 Happy monitoring 😁
+
+Some more screenshots from Grafana App Observability
+
+<div align="center">
+  <img src="https://github.com/robert-northmind/AppO11yDemo-iOS/blob/main/Docs/Resources/app-o11y-traces-1.png?raw=true" width="500">
+</div>
+<div align="center">
+  <img src="https://github.com/robert-northmind/AppO11yDemo-iOS/blob/main/Docs/Resources/app-o11y-logs-1.png?raw=true" width="500">
+</div>
