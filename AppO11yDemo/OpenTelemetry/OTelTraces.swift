@@ -18,7 +18,8 @@ class OTelTraces {
     private init() {}
     
     private var isInitialized = false
-
+    private(set) var tracerProvider: TracerProviderSdk?
+    
     func initialize() {
         guard isInitialized == false else { return }
         isInitialized = true
@@ -40,6 +41,7 @@ class OTelTraces {
             .add(spanProcessor: otlpHttpTraceProcessor)
             .with(resource: OTelResourceProvider().getResource())
             .build()
+        self.tracerProvider = tracerProvider
         OpenTelemetry.registerTracerProvider(tracerProvider:tracerProvider)
         
         let otelEndpointUrl = URL(string: "\(OTelConfig().endpointUrl)/v1/traces")!,

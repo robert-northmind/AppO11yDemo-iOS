@@ -8,6 +8,11 @@
 import Foundation
 import Combine
 import OpenTelemetryApi
+import OpenTelemetrySdk
+import StdoutExporter
+import OpenTelemetryProtocolExporterHttp
+import URLSessionInstrumentation
+import ResourceExtension
 
 protocol CoffeeBrewingServiceProtocol {
     var brewingStatusPublisher: Published<CoffeeBrewingStatus>.Publisher { get }
@@ -21,14 +26,17 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
     var brewingStatusPublisher: Published<CoffeeBrewingStatus>.Publisher { $brewingStatus }
 
     private let logger = OTelLogs.instance.getLogger()
-    private let tracer = OTelTraces.instance.getTracer()
     
     private var brewingTask: Task<Bool, Never>?
 
     func brewCoffee(_ coffee: Coffee) async -> Bool {
         logger.log("Starting to brew a new coffee", severity: .info, attributes: ["CoffeeType": coffee.title])
         
-        let parentSpan = tracer.spanBuilder(spanName: "BrewingCoffee")
+        let provider = OTelTraces.instance.tracerProvider
+        let originalResource = provider?.getActiveResource()
+        
+        let appTracer = OTelTraces.instance.getTracer()
+        let parentSpan = appTracer.spanBuilder(spanName: "BrewingCoffee")
             .setSpanKind(spanKind: .server)
             .startSpan()
         parentSpan.setAttribute(key: "CoffeeType", value: coffee.title.safeTracingName)
@@ -37,7 +45,10 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
             brewingTask.cancel()
         }
         let task = Task { () -> Bool in
-            let childSpan1 = tracer.spanBuilder(spanName: "WaitingForBarista")
+            provider?.updateActiveResource(FakeTraceServiceCreator.getBaristaResource())
+            
+            let appTracer1 = OTelTraces.instance.getTracer()
+            let childSpan1 = appTracer1.spanBuilder(spanName: "WaitingForBarista")
                 .setParent(parentSpan)
                 .setSpanKind(spanKind: .server)
                 .startSpan()
@@ -55,8 +66,11 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
             }
             childSpan1.end()
             
-            let childSpan2 = tracer.spanBuilder(spanName: "MakingTheCoffee")
-                .setParent(parentSpan)
+            provider?.updateActiveResource(FakeTraceServiceCreator.getCoffeeMachineResource())
+            
+            let appTracer2 = OTelTraces.instance.getTracer()
+            let childSpan2 = appTracer2.spanBuilder(spanName: "MakingTheCoffee")
+                .setParent(childSpan1)
                 .setSpanKind(spanKind: .server)
                 .startSpan()
             childSpan2.setAttribute(key: "SomeOtherKey", value: "SomeOtherValue")
@@ -81,6 +95,10 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
             return true
         }
         brewingTask = task
+        
+        if let originalResource = originalResource {
+            provider?.updateActiveResource(originalResource)
+        }
         
         let didCompleteBrewing = await task.value
         if didCompleteBrewing {
@@ -118,5 +136,35 @@ extension InjectedValues {
 extension String {
     var safeTracingName: String {
         return self.replacingOccurrences(of: " ", with: "_")
+    }
+}
+
+struct FakeTraceServiceCreator {
+    static func getBaristaResource() -> Resource {
+        let defaultResources = DefaultResources().get()
+        let customResource = Resource(
+            attributes: [
+                "service.name": AttributeValue.string("Barista"),
+                "deployment.environment": AttributeValue.string("production"),
+                "service.namespace": AttributeValue.string("AppO11yDemoNamespaceTest"),
+                "service.instance.id": AttributeValue.string("barista-instance-id")
+            ]
+        )
+        let coffeeMachineResource = defaultResources.merging(other: customResource)
+        return coffeeMachineResource
+    }
+    
+    static func getCoffeeMachineResource() -> Resource {
+        let defaultResources = DefaultResources().get()
+        let customResource = Resource(
+            attributes: [
+                "service.name": AttributeValue.string("CoffeeMachine"),
+                "deployment.environment": AttributeValue.string("production"),
+                "service.namespace": AttributeValue.string("AppO11yDemoNamespaceTest"),
+                "service.instance.id": AttributeValue.string("coffee-machine-instance-id")
+            ]
+        )
+        let coffeeMachineResource = defaultResources.merging(other: customResource)
+        return coffeeMachineResource
     }
 }
