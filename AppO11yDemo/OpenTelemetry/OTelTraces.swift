@@ -56,8 +56,8 @@ class OTelTraces {
                     return request.url?.path().split(separator: "/").last?.lowercased()
                 },
                 spanCustomization: { (request, spanBuilder) in
-                    spanBuilder.setAttribute(key: "kind", value: "client")
-                    spanBuilder.setSpanKind(spanKind: .client)
+                    spanBuilder.setAttribute(key: "kind", value: "server")
+                    spanBuilder.setSpanKind(spanKind: .server)
                 },
                 injectCustomHeaders: { request, span in
                     // This section is for injecting headers, we are injecting X-B3 headers to enable context propagation

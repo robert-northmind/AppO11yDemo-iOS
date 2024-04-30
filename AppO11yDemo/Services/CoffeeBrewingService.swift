@@ -29,7 +29,7 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
         logger.log("Starting to brew a new coffee", severity: .info, attributes: ["CoffeeType": coffee.title])
         
         let parentSpan = tracer.spanBuilder(spanName: "BrewingCoffee")
-            .setSpanKind(spanKind: .client)
+            .setSpanKind(spanKind: .server)
             .startSpan()
         parentSpan.setAttribute(key: "CoffeeType", value: coffee.title.safeTracingName)
 
@@ -39,7 +39,7 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
         let task = Task { () -> Bool in
             let childSpan1 = tracer.spanBuilder(spanName: "WaitingForBarista")
                 .setParent(parentSpan)
-                .setSpanKind(spanKind: .client)
+                .setSpanKind(spanKind: .server)
                 .startSpan()
             childSpan1.setAttribute(key: "SomeKey", value: "SomeValue")
             
@@ -57,7 +57,7 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
             
             let childSpan2 = tracer.spanBuilder(spanName: "MakingTheCoffee")
                 .setParent(parentSpan)
-                .setSpanKind(spanKind: .client)
+                .setSpanKind(spanKind: .server)
                 .startSpan()
             childSpan2.setAttribute(key: "SomeOtherKey", value: "SomeOtherValue")
             
