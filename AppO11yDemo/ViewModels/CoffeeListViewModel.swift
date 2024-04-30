@@ -10,7 +10,7 @@ import Combine
 @MainActor
 class CoffeeListViewModel: ObservableObject {
     @Published var coffees: [Coffee] = []
-    @Published var isLoading = false
+    @Published var isLoading = true
     @Published var error: ApiError? = nil
     
     private let coffeeService: CoffeeServiceProtocol

@@ -18,7 +18,7 @@ class OTelTraces {
     private init() {}
     
     private var isInitialized = false
-    
+
     func initialize() {
         guard isInitialized == false else { return }
         isInitialized = true
@@ -31,12 +31,13 @@ class OTelTraces {
             useSession: URLSession(configuration: urlConfig)
         )
         
-        let simpleSpanProcessor = SimpleSpanProcessor(spanExporter: StdoutExporter())
-        let batchSpanProcessor = BatchSpanProcessor(spanExporter: otlpHttpTraceExporter)
+        let stdoutProcessor = SimpleSpanProcessor(spanExporter: StdoutExporter())
+        let otlpHttpTraceProcessor = SimpleSpanProcessor(spanExporter: otlpHttpTraceExporter)
+//        let otlpHttpTraceProcessor = BatchSpanProcessor(spanExporter: otlpHttpTraceExporter)
         
         let tracerProvider = TracerProviderBuilder()
-            .add(spanProcessor: simpleSpanProcessor)
-            .add(spanProcessor: batchSpanProcessor)
+            .add(spanProcessor: stdoutProcessor)
+            .add(spanProcessor: otlpHttpTraceProcessor)
             .with(resource: OTelResourceProvider().getResource())
             .build()
         OpenTelemetry.registerTracerProvider(tracerProvider:tracerProvider)

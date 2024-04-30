@@ -20,7 +20,7 @@ class CoffeeService: CoffeeServiceProtocol {
     @Published var coffees: [Coffee] = []
     var coffeesPublisher: Published<[Coffee]>.Publisher { $coffees }
     
-    @Published var isLoading = false
+    @Published var isLoading = true
     var isLoadingPublisher: Published<Bool>.Publisher { $isLoading }
 
     @Published var error: ApiError? = nil
