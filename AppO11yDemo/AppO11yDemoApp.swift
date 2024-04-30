@@ -15,10 +15,6 @@ import URLSessionInstrumentation
 
 @main
 struct AppO11yDemoApp: App {
-    
-    let sampleKey = "sampleKey"
-    let sampleValue = "sampleValue"
-    
     init() {
         OTelTraces.instance.initialize()
         OTelLogs.instance.initialize()
