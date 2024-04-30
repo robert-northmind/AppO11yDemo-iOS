@@ -56,7 +56,6 @@ class OTelTraces {
                     return request.url?.path().split(separator: "/").last?.lowercased()
                 },
                 spanCustomization: { (request, spanBuilder) in
-                    spanBuilder.setAttribute(key: "kind", value: "server")
                     spanBuilder.setSpanKind(spanKind: .server)
                 },
                 injectCustomHeaders: { request, span in

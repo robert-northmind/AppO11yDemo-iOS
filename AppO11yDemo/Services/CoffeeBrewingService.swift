@@ -85,8 +85,10 @@ class CoffeeBrewingService: CoffeeBrewingServiceProtocol {
         let didCompleteBrewing = await task.value
         if didCompleteBrewing {
             parentSpan.status = .ok
+            logger.log("Finished making a new nice cup of coffee", severity: .info)
         } else {
             parentSpan.status = .error(description: "Failed_to_make_coffee")
+            logger.log("Failed to make coffee", severity: .error)
         }
         parentSpan.end()
         return didCompleteBrewing
