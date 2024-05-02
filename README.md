@@ -74,7 +74,7 @@ struct AppO11yDemoApp: App {
 These `initialize` methods take the config data which you provided into the [OTelConfig](/AppO11yDemo/OpenTelemetry/OTelConfig.swift) and sets up the OpenTelemetry SDK for you. If you wanna have a look at the config or do some more customization then have a look inside these files:
 
 - [OTelTraces.swift](/AppO11yDemo/OpenTelemetry/OTelTraces.swift)
-- [OTelLogs.swift.swift](/AppO11yDemo/OpenTelemetry/OTelLogs.swift.swift)
+- [OTelLogs.swift](/AppO11yDemo/OpenTelemetry/OTelLogs.swift)
 
 Generally you should not need to tweak things in there. But for example you might want to change the `SpanProcessor` which is used. By default we only use the `SimpleSpanProcessor` which exports data directly, which is good during development. But for prod builds you might want to change this to use the `BatchSpanProcessor`.
 
