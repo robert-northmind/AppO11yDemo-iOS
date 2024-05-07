@@ -52,29 +52,8 @@ class OTelTraces {
                     }
                     return true
                 },
-                nameSpan: { request in
-                    // Sets the name of the span to the relative path of the URL
-                    return request.url?.path().split(separator: "/").last?.lowercased()
-                },
                 spanCustomization: { (request, spanBuilder) in
-                    spanBuilder.setSpanKind(spanKind: .server)
-                },
-                injectCustomHeaders: { request, span in
-                    // This section is for injecting headers, we are injecting X-B3 headers to enable context propagation
-                    if request.url?.host() == otelEndpointUrl.host() {
-                        return
-                    }
-                    request.setValue(span!.context.traceId.hexString, forHTTPHeaderField: "X-B3-TraceId")
-                    request.setValue(span!.context.spanId.hexString, forHTTPHeaderField: "X-B3-SpanId")
-                },
-                receivedResponse: { response, _, span in
-                    if let httpResponse = response as? HTTPURLResponse {
-                        // this section is for adding attributes, we are adding the HttpStatusCode attribute
-                        span.setAttribute(key: "HttpStatusCode", value: httpResponse.statusCode)
-                    }
-                },
-                receivedError: { _, _, status, span in
-                    span.setAttribute(key: "HttpStatusCode", value: status)
+                    spanBuilder.setSpanKind(spanKind: .client)
                 }
             )
         )
